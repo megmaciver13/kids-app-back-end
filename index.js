@@ -1,13 +1,13 @@
 const express = require('express')
-const mongoose = require('mongoose')
+const mongoose = require('./db/schema')
 const cors = require('cors')
-const parser = require('parser')
+const parser = require('body-parser')
 
 const app = express()
 
-const Question = require('./schema')
-const Lesson = require('./schema')
-const Subject = require('./schema')
+const Question = mongoose.model('Question')
+const Lesson = mongoose.model('Lesson')
+const Subject = mongoose.model('Subject')
 
 app.use(cors())
 app.use(parser.json())
