@@ -240,7 +240,7 @@ let airplaneQ1 = new Question ({
         isCorrect: false
       },
       {
-        image: 'https://www.flaticon.com/free-icon/airplane_579268#term=airplanes&page=1&position=19',
+        image: '../images/airplane.png',
         text: 'Airplane',
         isCorrect: true
       },
