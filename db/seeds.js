@@ -448,7 +448,7 @@ let trains = new Lesson ({
 
 let transportation = new Subject ({
   name: 'Transportation',
-  subjectImage: 'https://www.flaticon.com/free-icon/transportation_649315#term=airplanes&page=1&position=95',
+  subjectImage: 'transportation.png',
   lessons: [airplanes, vehicles, trains]
 })
 
