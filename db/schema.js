@@ -37,4 +37,8 @@ const Question = mongoose.model('Question', QuestionSchema)
 const Lesson = mongoose.model('Lesson', LessonSchema)
 const Subject = mongoose.model('Subject', SubjectSchema)
 
-module.exports = mongoose
+module.exports = {
+  Question: Question,
+  Lesson: Lesson,
+  Subject: Subject
+}

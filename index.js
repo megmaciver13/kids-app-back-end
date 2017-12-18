@@ -5,9 +5,11 @@ const parser = require('body-parser')
 
 const app = express()
 
-const Question = mongoose.model('Question')
-const Lesson = mongoose.model('Lesson')
-const Subject = mongoose.model('Subject')
+const Schema = require ('./db/schema')
+
+const Subject = Schema.Subject
+const Lesson = Schema.Lesson
+const Question = Schema.Question
 
 app.use(cors())
 app.use(parser.json())
