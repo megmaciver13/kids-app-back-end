@@ -44,7 +44,8 @@ Animals = new Subject
           isCorrect: False
         }
       ]
-    }
+    })
+  }
     new Question2({
       Question: "Pick the chicken.",
     answers:
@@ -498,7 +499,7 @@ new Lesson3{
         isCorrect: False
       }
     ]
-  }
+  })
   new Question3({
     Question: "Red",
   answers:
