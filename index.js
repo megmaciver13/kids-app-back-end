@@ -48,6 +48,4 @@ app.get('/subjects/:subject_id/lesson/:id', (req, res) => {
     })
 })
 
-app.listen(3001, () => {
-  console.log('App listening on port 3001.')
-})
+app.listen(process.env.PORT || 3001)
