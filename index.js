@@ -5,7 +5,7 @@ const parser = require('body-parser')
 
 const app = express()
 
-const Schema = require ('./db/schema')
+const Schema = require('./db/schema')
 
 const Subject = Schema.Subject
 const Lesson = Schema.Lesson
