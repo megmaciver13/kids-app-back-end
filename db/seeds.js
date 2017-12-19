@@ -448,7 +448,7 @@ let trains = new Lesson ({
 
 let transportation = new Subject ({
   name: 'Transportation',
-  subjectImage: 'transportation.png',
+  subjectImage: '../../../public/images/transportation.png',
   lessons: [airplanes, vehicles, trains]
 })
 
