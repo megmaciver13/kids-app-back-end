@@ -39,10 +39,14 @@ app.get('/subjects/:id', (req, res) => {
 })
 
 app.get('/subjects/:subject_id/lesson/:id', (req, res) => {
-  Subject.find({lessons: [{_id: req.params.id}]})
+  Subject.findOne({ _id: req.params.subject_id })
     .then(subject => {
-      console.log(subject)
-      res.json(subject)
+      console.log(subject.lessons, req.params.id)
+      let lesson = subject.lessons.find((lesson) => {
+        return lesson._id == req.params.id
+      })
+      console.log(lesson)
+      res.json(lesson)
     })
     .catch(err => {
       console.log(err)
