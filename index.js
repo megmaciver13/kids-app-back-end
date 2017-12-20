@@ -39,7 +39,7 @@ app.get('/subjects/:id', (req, res) => {
 })
 
 app.get('/subjects/:subject_id/lesson/:id', (req, res) => {
-  Subject.find({lessons: { _id: req.params.id}})
+  Subject.find({lessons: [{_id: req.params.id}]})
     .then(subject => {
       console.log(subject)
       res.json(subject)
