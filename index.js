@@ -44,12 +44,9 @@ app.get('/subjects/:subject_id/lesson/:id', (req, res) => {
       let lesson = subject.lessons.find((lesson) => {
         return lesson._id == req.params.id
       })
-      console.log(lesson)
       res.json(lesson)
     })
-    .catch(err => {
-      console.log(err)
-    })
+    .catch(err => console.log(err))
 })
 
 app.post('/subjects/:id', (req, res) => {
