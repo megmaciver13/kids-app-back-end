@@ -56,14 +56,11 @@ app.post('/subjects/:id', (req, res) => {
   Subject.findById(req.params.id)
     .then(subject => {
       subject.lessons.push({name: req.body.name, lessonImage: req.body.lessonImage, questions: []})
-      console.log(subject)
-      subject.save((err, subject) => {
-        if (err) {
-          console.log(err)
-        } else {
-          res.json(subject)
-        }
-      })
+      subject.save()
+        .then(subject => {
+          res.json('new lesson added!')
+        })
+        .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 })
