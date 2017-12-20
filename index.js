@@ -89,4 +89,20 @@ app.post('/subjects/:subject_id/lesson/:id', (req, res) => {
     .catch(err => console.log(err))
 })
 
+app.delete('/subjects/:subject_id/lesson/:id', (req, res) => {
+  Subject.findById(req.params.subject_id)
+    .then(subject => {
+      let lessonIndex = subject.lessons.findIndex(lesson => {
+        return lesson._id == req.params.id
+      })
+      subject.lessons.splice(lessonIndex, 1)
+      subject.save()
+        .then(subject => {
+          res.json('lesson deleted!')
+        })
+        .catch(err => console.log(err))
+    })
+    .catch(err => console.log(err))
+})
+
 app.listen(process.env.PORT || 3001)
