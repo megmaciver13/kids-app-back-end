@@ -64,17 +64,17 @@ app.post('/subjects/:subject_id/lesson', (req, res) => {
     .catch(err => console.log(err))
 })
 
-app.patch('/subjects/:subject_id/lesson/:id', (req, res) => {
+app.put('/subjects/:subject_id/lesson/:id/questions', (req, res) => {
+  console.log('putting is occurring!')
   Subject.findById(req.params.subject_id)
     .then(subject => {
-      let lessonIndex = subject.lessons.findIndex(lesson => {
-        return lesson._id == req.params.id
-      })
-      subject.lessons[lessonIndex].lessonImage = req.body.lessonImage
-      subject.lessons[lessonIndex].name = req.body.name
+      let lesson = subject.lessons.id(req.params.id)
+      lesson.lessonImage = req.body.lessonImage
+      lesson.name = req.body.name
+      console.log(lesson)
       subject.save()
         .then(subject => {
-          res.json('lesson edited!')
+          res.status(200).json(subject)
         })
         .catch(err => console.log(err))
     })
