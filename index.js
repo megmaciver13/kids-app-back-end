@@ -65,16 +65,14 @@ app.post('/subjects/:subject_id/lesson', (req, res) => {
 })
 
 app.put('/subjects/:subject_id/lesson/:id/questions', (req, res) => {
-  console.log('putting is occurring!')
   Subject.findById(req.params.subject_id)
     .then(subject => {
       let lesson = subject.lessons.id(req.params.id)
       lesson.lessonImage = req.body.lessonImage
       lesson.name = req.body.name
-      console.log(lesson)
       subject.save()
         .then(subject => {
-          res.status(200).json(subject)
+          res.json(subject)
         })
         .catch(err => console.log(err))
     })
