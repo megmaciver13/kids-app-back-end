@@ -28,8 +28,8 @@ app.get('/subjects', (req, res) => {
   res.redirect('/')
 })
 
-app.get('/subjects/:id', (req, res) => {
-  Subject.findById(req.params.id)
+app.get('/subjects/:subject_id', (req, res) => {
+  Subject.findById(req.params.subject_id)
     .then(subject => {
       res.json(subject)
     })
@@ -44,7 +44,6 @@ app.get('/subjects/:subject_id/lesson/:id', (req, res) => {
       let lesson = subject.lessons.find((lesson) => {
         return lesson._id == req.params.id
       })
-      console.log(lesson)
       res.json(lesson)
     })
     .catch(err => {
@@ -52,10 +51,10 @@ app.get('/subjects/:subject_id/lesson/:id', (req, res) => {
     })
 })
 
-app.post('/subjects/:id', (req, res) => {
-  Subject.findById(req.params.id)
+app.post('/subjects/:subject_id/lesson', (req, res) => {
+  Subject.findById(req.params.subject_id)
     .then(subject => {
-      subject.lessons.push({name: req.body.name, lessonImage: req.body.lessonImage, questions: []})
+      subject.lessons.push(req.body)
       subject.save()
         .then(subject => {
           res.json('new lesson added!')
@@ -65,18 +64,31 @@ app.post('/subjects/:id', (req, res) => {
     .catch(err => console.log(err))
 })
 
-app.post('/subjects/:subject_id/lesson/:id', (req, res) => {
+app.patch('/subjects/:subject_id/lesson/:id', (req, res) => {
   Subject.findById(req.params.subject_id)
     .then(subject => {
-      console.log(subject)
+      let lessonIndex = subject.lessons.findIndex(lesson => {
+        return lesson._id == req.params.id
+      })
+      subject.lessons[lessonIndex].lessonImage = req.body.lessonImage
+      subject.lessons[lessonIndex].name = req.body.name
+      subject.save()
+        .then(subject => {
+          res.json('lesson edited!')
+        })
+        .catch(err => console.log(err))
+    })
+    .catch(err => console.log(err))
+})
+
+app.post('/subjects/:subject_id/lesson/:id/questions', (req, res) => {
+  console.log(req.body)
+  Subject.findById(req.params.subject_id)
+    .then(subject => {
       let lesson = subject.lessons.find(lesson => {
         return lesson._id == req.params.id
       })
-      console.log(lesson)
-      let newAnswer1 = {image: req.body.image1, text: req.body.text1, isCorrect: req.body.isCorrect1}
-      let newAnswer2 = {image: req.body.image2, text: req.body.text2, isCorrect: req.body.isCorrect2}
-      let newAnswer3 = {image: req.body.image3, text: req.body.text3, isCorrect: req.body.isCorrect3}
-      lesson.questions.push({question: req.body.question, answers: [newAnswer1, newAnswer2, newAnswer3]})
+      lesson.questions.push(req.body)
       subject.save((err, subject) => {
         if (err) {
           console.log(err)
