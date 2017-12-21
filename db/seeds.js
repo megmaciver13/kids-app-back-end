@@ -235,7 +235,7 @@ let airplaneQ1 = new Question ({
   answers:
     [
       {
-        image: 'https://www.flaticon.com/free-icon/rocket-ship_171247',
+        image: 'https://s3.us-east-2.amazonaws.com/project-3-icons/rocket-ship.png',
         text: 'Rocket ship',
         isCorrect: false
       },
