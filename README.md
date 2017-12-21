@@ -1,1 +1,44 @@
-# lesson-3-kids-app-back-end
+# LearnNGrow
+
+This app is a visual learning app in the style of short, visual quizzes intended to help young children learn in an engaging environment. Parents also have the capability of adding their own lessons geared to their children's interests and learning needs.
+
+## List of Features
+
+This repository represents the back-end API for Learn n Grow. It comprises of a connection file, a schema file, and a file with our seed data. The index file contains routes for get, post, put, and delete methods, called on to alter how the front-end alters. A full list of dependencies can be found in the package.json file.
+
+## Getting Started
+
+The repository for this code can be found at: https://github.com/megmaciver13/kids-app-back-end
+
+## Installing the App
+
+You will to use node and mongodb on your local system to get started. To install the app, clone this repository to a local system and 'npm install' to install all dependencies needed. Then you will need to seed your mongodb database by running 'node db/seeds.js.'
+
+## Built with
+
+To build this app, we used:
+* Node
+* Express
+* Mongoose
+* MongoDB
+* bodyParser
+* CORS
+
+## Deployment
+
+This repository is deployed to a public url here: https://kids-app-back-end.herokuapp.com/
+
+To see the front end, visit:
+https://github.com/megmaciver13/kids-app-front-end
+
+The fully deployed app is at:
+http://learn-n-grow.surge.sh/
+
+## Group Member Roles
+Authors: Meg MacIver, Stella Gordon-Zigel, Charles Wilner
+
+* As a group, we developed the structure of how data would be stored in our MongoDB database.
+* As a group, we decided to use the features-branch git workflow.
+* Once we created the remote repository, we all researched to find seed data to populate our database.
+* Charles structured the seed data. When we changed structure a bit, Stella reorganized the seed data.
+* Meg created the routes in the index.js file to allow for CRUD functionality, working in conjunction with the team so that routes correspond to front-end API calls to the back end.
