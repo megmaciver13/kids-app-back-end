@@ -686,3 +686,5 @@ Subject.remove({})
     process.exit()
   })
   .catch(err => console.log(err))
+
+// Great job with the seed data.  Very clean and organized.  To reduce the size of this file and seperate your concerns further, consider creating a `json` file with all your data there, which you can systematically load into your database.  Great job making use of AWS as well!

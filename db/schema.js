@@ -42,3 +42,9 @@ module.exports = {
   Lesson: Lesson,
   Subject: Subject
 }
+// FYI: you can use module.exports = {
+//   Question,
+//   Lesson,
+//   Subject
+// }
+// as a shortcut for the same thing
