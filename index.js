@@ -11,16 +11,17 @@ const Subject = Schema.Subject
 const Lesson = Schema.Lesson
 const Question = Schema.Question
 
-app.use(cors())
+app.use(cors()) // As a next step, consider configuring CORS to only allow access from origins you expect
 app.use(parser.json())
-
+// Consider using seperate files for controllers for better seperation of concerns
 app.get('/', (req, res) => {
   Subject.find()
     .then(subjects => {
       res.json(subjects)
     })
     .catch(err => {
-      console.log(err)
+      console.log(err)// You can also use `res.status(500).send('Something broke!')` to send an html error code.
+      // Checkout http://expressjs.com/en/guide/error-handling.html
     })
 })
 
@@ -57,7 +58,7 @@ app.post('/subjects/:subject_id/lesson', (req, res) => {
       subject.lessons.push(req.body)
       subject.save()
         .then(subject => {
-          res.json('new lesson added!')
+          res.json('new lesson added!')// Probably makes more sense just to use `res.send()` in these cases
         })
         .catch(err => console.log(err))
     })
@@ -114,5 +115,7 @@ app.delete('/subjects/:subject_id/lesson/:id', (req, res) => {
     })
     .catch(err => console.log(err))
 })
+
+// Really good job navigating through your nested data.
 
 app.listen(process.env.PORT || 3001)
